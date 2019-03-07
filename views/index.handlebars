@@ -1,0 +1,27 @@
+<header>
+    <h1>/Film Scraper</h1>
+    <p>Scrape slashfilm.com for new articles</p>
+    <button id="scrape-btn">Scrape New Articles</button>
+</header>
+<div class="container">
+    <div class="articles-div">
+        <h2 class="list-heading">Articles</h2>
+        <ul>
+            {{#each articles}}
+            <li>
+                <div class="article">
+                    <h2 data-id={{_id}}>{{title}}</h2>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="input-div">
+        <form>
+            <textarea class="comment-text" placeholder="Comment" rows="6"></textarea>
+            <input class="comment-title" type="text" placeholder="Title">
+            <input class="comment-submit" type="submit" value="Save">
+        </form>
+        <div class="comments-div"></div>
+    </div>
+</div>

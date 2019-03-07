@@ -1,0 +1,79 @@
+html {
+  font-family: "Overpass", sans-serif;
+}
+header {
+  background-color: darkslategray;
+  color: white;
+  text-align: center;
+  padding: 80px;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.container {
+  width: 1070px;
+  margin: 0 auto;
+}
+.articles-div {
+  width: 70%;
+  float: left;
+}
+.input-div {
+  width: 30%;
+  float: right;
+  margin-bottom: 40px;
+}
+form {
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+}
+.comment-text {
+  width: 98%;
+  font: 400 13.3333px Arial;
+  font-size: 16px;
+}
+.comment-title {
+  width: 266px;
+}
+.comments-div {
+  float: right;
+  width: 100%;
+  margin-top: 10px;
+  overflow-y: scroll;
+}
+.note-div {
+  background-color: lightblue;
+  margin-bottom: 5px;
+}
+.note-header {
+  background-color: lightgray;
+  padding: 5px;
+}
+.note-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 15px;
+}
+.note-created {
+  font-size: 11px;
+  font-style: italic;
+}
+.note-body {
+  padding: 5px;
+}
+.note-options-div {
+  float: right;
+  width: 40px;
+}
+.note-options-div a {
+  border-radius: 2px;
+  height: 18px;
+  text-align: center;
+  display: inline-block;
+  width: 18px;
+  background-color: #000000c9;
+  color: white;
+  text-decoration: none;
+}
