@@ -24,9 +24,10 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/slashfilm_scraper", {
-  useNewUrlParser: true
-});
+var MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/slashfilm_scraper";
+
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
