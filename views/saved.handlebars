@@ -1,10 +1,7 @@
 <header>
     <h1>/Film Scraper</h1>
-    <p>Scrape slashfilm.com for articles, make notes, and save articles</p>
-    <div class="button-bar"><button id="scrape-btn">Scrape New Articles</button> <a href="/saved"><button
-                id="view-saved-btn">View
-                Saved</button></a></div>
-
+    <p>Scrape slashfilm.com for new articles</p>
+    <div class="button-bar"><a href="/articles"><button id="view-btn">View Articles</button></a></div>
 </header>
 <div class="container">
     <div class="articles-div">
@@ -13,11 +10,10 @@
             <li>
                 <div class="article clearfix">
                     <h2 class="article-title" data-id={{_id}}>{{title}}</h2>
-                    <button data-saved={{saved}} data-id={{_id}} class="saved-{{saved}}" id="save-btn">Save</button>
+                    <button data-saved={{saved}} data-id={{_id}} class="saved-true" id="save-btn">Saved!</button>
                     <a target="_blank" href={{link}}><button id="view-btn">View Article</button></a>
                 </div>
             </li>
-
             {{/each}}
         </ul>
     </div>

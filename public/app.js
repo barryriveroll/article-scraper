@@ -1,12 +1,7 @@
 $(document).ready(function() {
   $(document).on("click", "h2", function() {
-    // Empty the notes from the note section
     $(".comments-div").empty();
-    // Save the id from the p tag
     var thisId = $(this).attr("data-id");
-    // $(this)
-    //   .parent(".article")
-    //   .append($(".input-div"));
     $(".comment-title").val("");
     $(".comment-text").val("");
 
@@ -34,7 +29,9 @@ $(document).ready(function() {
                     note.title
                   }</span><span class="note-created">${
                     note.createdAt
-                  }</span><div class="note-options-div"><a href="">-</a> <a href="">+</a></div></div>`
+                  }</span><div class="note-options-div" data-id=${
+                    note._id
+                  } title="Delete note">-</div>`
                 )
                 .append(`<div class="note-body">${note.body}</div>`);
               $(".comments-div").append(newCommentDiv);
@@ -44,11 +41,49 @@ $(document).ready(function() {
       });
   });
 
+  $(document).on("click", ".note-options-div", function() {
+    const thisElement = $(this);
+    const thisId = thisElement.attr("data-id");
+    console.log(thisElement);
+    $.ajax({
+      method: "DELETE",
+      url: "/notes/" + thisId
+    }).then(function() {
+      thisElement
+        .parent()
+        .parent()
+        .remove();
+    });
+  });
+
+  $(document).on("click", "#save-btn", function() {
+    const thisElement = $(this);
+    const savedValue = $.parseJSON(thisElement.attr("data-saved"));
+    let newSavedValue = savedValue ? false : true;
+    const thisId = thisElement.attr("data-id");
+    $.ajax({
+      method: "PUT",
+      url: "/articles/" + thisId,
+      data: {
+        saved: newSavedValue
+      }
+    }).then(function(data) {
+      console.log(data);
+      const newText = newSavedValue ? "Saved!" : "Save";
+      thisElement
+        .removeClass("saved-false")
+        .removeClass("saved-true")
+        .attr("data-saved", newSavedValue)
+        .addClass("saved-" + newSavedValue)
+        .text(newText);
+    });
+  });
+
   // When you click the savenote button
   $(document).on("click", ".comment-submit", function(e) {
     e.preventDefault();
     // Grab the id associated with the article from the submit button
-    var thisId = $(this).attr("data-id");
+    const thisId = $(this).attr("data-id");
 
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
@@ -79,4 +114,6 @@ $(document).ready(function() {
       location.reload();
     });
   });
+
+  $(".saved-true").text("Saved!");
 });

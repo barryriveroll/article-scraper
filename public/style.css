@@ -3,17 +3,48 @@ html {
 }
 header {
   background-color: darkslategray;
+  background-image: url(./background.png);
   color: white;
   text-align: center;
   padding: 80px;
+  text-shadow: 1px 1px black;
+}
+header button {
+  background: rgba(47, 79, 79, 0.603);
+}
+button {
+  background: #000000ad;
+  color: white;
+  border: 2px solid #00000078;
+  border-radius: 4px;
+}
+button:hover {
+  cursor: pointer;
+}
+button.saved-false {
+  background: #000000ad;
+}
+button.saved-true {
+  background: #43acff;
 }
 ul {
   list-style-type: none;
   padding-left: 0px;
 }
+.article-title {
+  margin: 0px;
+}
+.button-bar {
+  margin: 10px;
+}
 .container {
   width: 1070px;
   margin: 0 auto;
+}
+.article {
+  background-color: #8080807a;
+  padding: 10px;
+  margin: 8px;
 }
 .articles-div {
   width: 70%;
@@ -65,9 +96,9 @@ form {
 }
 .note-options-div {
   float: right;
-  width: 40px;
+  width: 18px;
 }
-.note-options-div a {
+.note-options-div {
   border-radius: 2px;
   height: 18px;
   text-align: center;
@@ -76,4 +107,13 @@ form {
   background-color: #000000c9;
   color: white;
   text-decoration: none;
+}
+.note-options-div:hover {
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

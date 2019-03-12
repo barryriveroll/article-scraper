@@ -33,8 +33,7 @@ mongoose.connect(MONGODB_URI);
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
-  db.Article.deleteMany({}, function(data1) {
-    console.log(data1);
+  db.Article.deleteMany({ saved: false }, function() {
     // First, we grab the body of the html with axios
     axios.get("https://www.slashfilm.com/").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -75,14 +74,26 @@ app.get("/scrape", function(req, res) {
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
-  // TODO: Finish the route so it grabs all of the articles
   db.Article.find({})
     .then(function(data) {
-      console.log(data[0]);
       var hbsObject = {
         articles: data
       };
       res.render("index", hbsObject);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
+// Route for viewing saved articles
+app.get("/saved", function(req, res) {
+  db.Article.find({ saved: true })
+    .then(function(data) {
+      var hbsObject = {
+        articles: data
+      };
+      res.render("saved", hbsObject);
     })
     .catch(function(err) {
       res.json(err);
@@ -110,6 +121,20 @@ app.post("/articles/:id", function(req, res) {
     }).then(function(note) {
       console.log(note);
     });
+  });
+});
+
+app.put("/articles/:id", function(req, res) {
+  db.Article.findByIdAndUpdate(req.params.id, {
+    $set: req.body
+  }).then(function(data) {
+    res.send(data);
+  });
+});
+
+app.delete("/notes/:id", function(req, res) {
+  db.Note.deleteOne({ _id: req.params.id }).then(function(data) {
+    res.send(data);
   });
 });
 

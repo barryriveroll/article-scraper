@@ -15,6 +15,10 @@ var ArticleSchema = new Schema({
     type: Array,
     required: true
   },
+  saved: {
+    type: Boolean,
+    default: false
+  },
   note: [
     {
       type: Schema.Types.ObjectId,
