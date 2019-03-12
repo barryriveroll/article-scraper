@@ -4,18 +4,26 @@ html {
 header {
   background-color: darkslategray;
   background-image: url(./background.png);
-  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: rgb(0, 0, 0);
   text-align: center;
-  padding: 80px;
-  text-shadow: 1px 1px black;
+  padding: 65px;
+  text-shadow: 1px 1px rgb(255, 255, 255);
 }
 header button {
   background: rgba(47, 79, 79, 0.603);
 }
+h1 {
+  font-size: 50px;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px rgb(255, 255, 255);
+}
 button {
   background: #000000ad;
   color: white;
-  border: 2px solid #00000078;
+  border: 2px solid #ffffff78;
   border-radius: 4px;
 }
 button:hover {
