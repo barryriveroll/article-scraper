@@ -33,7 +33,7 @@ mongoose.connect(MONGODB_URI);
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
-  db.Article.deleteMany({ saved: false }, function() {
+  db.Article.deleteMany({}, function() {
     // First, we grab the body of the html with axios
     axios.get("https://www.slashfilm.com/").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
